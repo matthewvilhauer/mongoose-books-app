@@ -40,9 +40,20 @@
             <hr>
             <p>
               <b>{{title}}</b>
-              by {{author}}
+              by {{author.name}}
+              <br>
+              <b>Characters:</b>
+              {{#each characters}}
+                {{name}}
+              {{/each}}
               <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
             </p>
+            <form class="form-inline" id="addCharacterForm" data-id={{_id}}>
+              <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Enter Character">
+              </div>
+              <button type="submit" class="btn btn-default">Add Character</button>
+            </form>
             {{/each}}
           </script>
         </div>
