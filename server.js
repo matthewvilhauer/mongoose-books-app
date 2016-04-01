@@ -31,11 +31,15 @@ app.get('/api/books', function (req, res) {
 
 // get one book
 app.get('/api/books/:id', function (req, res) {
-  // find one book by its id
-  db.Book.findById(req.params.id, function(err, book){
-    if (err) { return console.log("show error: " + err); }
-    res.json(book);
+  db.Book.findById(function(err, books) {
+
   });
+
+  // find one book by its id
+  // db.Book.findById(req.params.id, function(err, book){
+  //   if (err) { return console.log("show error: " + err); }
+  //   res.json(book);
+  // });
 });
 
 // create new book
@@ -54,7 +58,7 @@ app.post('/api/books', function (req, res) {
 // delete book
 app.delete('/api/books/:id', function (req, res) {
   // get book id from url params (`req.params`)
-  console.log(req.params)
+  console.log(req.params);
   var bookId = req.params.id;
 
   db.Book.findOneAndRemove({ _id: bookId }, function (err, deletedBook) {
